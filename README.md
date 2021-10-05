@@ -378,7 +378,7 @@ curl localhost:80
 
 - Сценарий "Как 'подключиться' к работающему контейнеру?"
 ```shell
-docker container logs proxy
+docker container logs proxy # можно увидеть только если логи были записаны стандратным linux-способом. С java не сработает
 docker container attach proxy --sig-proxy=false # otherwise detach key `ctrl-c` will stop container, if run with option --sig-proxy=true you need to open new tab and container there
 docker container top proxy
 docker container exec -it proxy /bin/sh
