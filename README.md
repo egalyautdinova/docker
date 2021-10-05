@@ -378,27 +378,27 @@ curl localhost:80
 
 - Сценарий "Как 'подключиться' к работающему контейнеру?"
 ```shell
-docker container logs
-docker container attach --sig-proxy=false # otherwise detach key `ctrl-c` will stop container 
-docker container top
-docker container exec -it /bin/sh
+docker container logs proxy
+docker container attach proxy --sig-proxy=false # otherwise detach key `ctrl-c` will stop container, if run with option --sig-proxy=true you need to open new tab and container there
+docker container top proxy
+docker container exec -it proxy /bin/sh
 ```
 
 - Сценарий "Как посмотреть свойства контейнера?"
 ```shell
 docker container port
-docker container inspect [| jq]
+docker container inspect [| jq] # очень похоже на docker image inspect
 ```
 
 - Сценарий "Как поставить на паузу контейнер?"
 ```shell
-docker container pause
+docker container pause #не особо используется, требует имплементации опр методов у приложения. Например, java app упадет при вызове этого метода
 docker container unpause
 ```
 
 - Сценарий "Как создать контейнер с сервисом без запуска?"
 ```shell
-docker container create
+docker container create <image>
 ```
 
 - Сценарий "Как запустить созданный контейнер?"
@@ -441,7 +441,7 @@ docker container cp
 - Какие способы идентификации контейнера?
 - Какое имя у контейнера по умолчанию?
 - В чем физический смысл удаления контейнера?
-- Что делает `prune`?
+- Что делает `prune`? Remove all stopped containers
 - Сколько новых layers добавила команда `commit` к базовому образу?
 
 ---
